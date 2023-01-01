@@ -29,7 +29,7 @@
 //        8,      16,      (code)+7,   pal, \
 //        16,      16,      (code)+8,   pal, \
 //        128};
-
+//-----FIN OPCION 1-----//
 //-----OPCION 2-----//
 #define DEF_METASPRITE_2x2(name,code,pal)\
 const unsigned char name[]={\
@@ -50,7 +50,7 @@ DEF_METASPRITE_2x2(playerSalto, 0x89, 0);
 DEF_METASPRITE_2x2(playerAtaca, 0x92, 0);
 
 
-//-----***-----//
+//-----FIN OPCION 2-----//
 /*{pal:"nes",layout:"nes"}*/
 const char PALETTE[32] = { 
   0x03,			// color de fondo
@@ -78,8 +78,13 @@ void main(void)
   vram_write("HELLO, WORLD!", 12);
   ppu_on_all();
   
-  oam_meta_spr_pal(100, 100, 2, playerEstatico);
 
   while(1) {
+    oam_meta_spr_pal(110, 100, 2,playerEstatico);
+    oam_meta_spr_pal(132, 132, 2,playerSalto);
+    oam_meta_spr_pal(154, 154, 2,playerAtaca);
+    
+    ppu_wait_nmi();
+
   }
 }
