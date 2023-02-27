@@ -3,12 +3,8 @@
 
 #include <stdlib.h>
 #include <string.h>
-
-#include <stdlib.h>
-#include <string.h>
 #include "neslib.h"
 #include <nes.h>
-// link the pattern table into CHR ROM
 //#link "chr_generic.s"
 #include "bcd.h"
 //#link "bcd.c"
@@ -31,7 +27,7 @@
 //        128};
 //-----FIN OPCION 1-----//
 //-----OPCION 2-----//
-#define DEF_METASPRITE_2x2(name,code,pal)\
+#define DEF_METASPRITE_3x3(name,code,pal)\
 const unsigned char name[]={\
         0,      0,      (code)+0,   pal, \
         8,      0,      (code)+1,   pal, \
@@ -45,9 +41,9 @@ const unsigned char name[]={\
         128};
 
 
-DEF_METASPRITE_2x2(playerEstatico, 0x80, 0);
-DEF_METASPRITE_2x2(playerSalto, 0x89, 0);
-DEF_METASPRITE_2x2(playerAtaca, 0x92, 0);
+DEF_METASPRITE_3x3(playerEstatico, 0x80, 0);
+DEF_METASPRITE_3x3(playerSalto, 0x89, 0);
+DEF_METASPRITE_3x3(playerAtaca, 0x92, 0);
 
 
 //-----FIN OPCION 2-----//
@@ -75,7 +71,7 @@ void main(void)
 {
   setup_graphics();
   vram_adr(NTADR_A(2,2));
-  vram_write("HELLO, WORLD!", 12);
+  vram_write("HOLA MUNDO", 12);
   ppu_on_all();
   
 
